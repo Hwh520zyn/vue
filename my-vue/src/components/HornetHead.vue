@@ -1,5 +1,5 @@
 <template>
-		<div class="head-box">
+		<head class="head-box">
 			<!--logo标志-->
 			<div class=""><img src="../../static/img/logo2.png" alt="出错了" class="logo-top"  /></div>
 			<!--搜索框-->
@@ -11,11 +11,13 @@
 			</div>
 			<!--登录按钮-->
 			<div class="login-box">
-					<div ><span class="login"><a href="javascript:;">登录</a></span></div>
+				
+					<router-link to="/Login" class="login">登录</router-link>	
+
 					<!--登录成功的默认头像-->
 					<span class="login-ok-default"><a href="javascript:;"><img src="../../static/img/login-ok-default.jpeg" alt="" /></a></span>
 			</div>	
-		</div>
+		</head>
 </template>
 
 
@@ -72,8 +74,9 @@
 		font-size: 0.13rem;
 		padding-left: 0.2rem;
 		position: relative;
+		padding-top: 0.02rem;
 	}
-	.login a{
+	.login {
 		color: #f90;
 	}
 	.login-ok-default{

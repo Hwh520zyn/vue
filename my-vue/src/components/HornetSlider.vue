@@ -22,27 +22,15 @@
 			return {
 				swiperOption: {
 		        	loop:true,				//循环
+		        
 			        autoplay: {
 					    delay: 3000,
 					    disableOnInteraction: false  //默认是true， 触碰或其他操作停止播放
 					},
-			          direction : 'horizontal',    /*滑动方向，可设置水平(horizontal)或垂直(vertical)*/
-			          pagination: {
+			        direction : 'horizontal',    /*滑动方向，可设置水平(horizontal)或垂直(vertical)*/
+			        pagination: {
 					      el: '.swiper-pagination',
-					      type:'custom',
-					         renderCustom: function (swiper, current, total) {
-					            var customHtml = "";  
-				                for(var i = 0; i <total; i++) {  
-				                    //判断哪个分页器此刻应该被激活  
-				                    if(i ==( current-1 )) {  
-				                        customHtml += `<span class="swiper-pagination-customs  swiper-pagination-customs-active"></span>`;  
-				                    } else {  
-				                        customHtml += `<span class="swiper-pagination-customs"></span>`;  
-				                    }  
-				                }  
-				                return customHtml;  
-				                mySwiper.pagination.render()
-						      }
+					      clickable: true,		//此参数设置为true时，点击分页器的指示点分页器会控制Swiper切换
 					  },
 		          
 		        }
@@ -58,25 +46,12 @@
 		height: 2rem;
 		margin-top: 0.1rem;
 	}
-
 	
+	.swiper-pagination-bullet-active{
+		background: #f5ad1e;
+	}
 	/*#slider-img img{
 		width:4rem;
 	}*/
-	.swiper-pagination-custom{
-		display: inline-block;
-        width: 100%;  
-        height: 0.05rem;
-        background: #f90;
-	}
-	.swiper-pagination-customs{
-		display: inline-block;  
-		width: 0.6rem;  
-        height: 0.2rem;  
-        background:#f90;  
-	}
-	.swiper-pagination-customs-active{
-		 opacity: 1;  
-         background-color: #F78E00;  
-	}
+	
 </style>
