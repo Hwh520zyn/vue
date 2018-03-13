@@ -4,7 +4,7 @@
 			<h3>推荐攻略</h3>
 		</div>
 
-		<a href="javascript:;" v-for="(item,index) in list" :key="item.id" >
+		<a href="javascript:;" v-for="(item,index) in list" :key="item.id"   @click="aaa(index)"  :style="{'background' : activeindex === index ? '#ff990047' : '' }">
 			<div class="title"> <span >{{item.title}}</span>
 				<div class="tag"> <img :src="item.tag" alt="" /></div>
 			</div>
@@ -42,6 +42,7 @@
 		name: "IndexMain",
 		data() {
 			return {
+				activeindex:"", 
 				list : [
 							{ 
 								title:" 三亚的正确打开方式——吃泡三亚" ,
@@ -86,7 +87,9 @@
 			}
 		},
 		methods : {
-			
+			aaa:function(n){
+            this.activeindex = n;
+     	   }
 		}
 	}
 </script>
