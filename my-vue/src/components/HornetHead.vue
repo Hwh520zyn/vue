@@ -83,10 +83,11 @@
 		position: absolute;
 		top:0;
 		right:0.03rem;
+		display: none;
 	}
 	.login-ok-default img{
 		border-radius: 50%;
-		display: none;
+		
 	}
 
 </style>

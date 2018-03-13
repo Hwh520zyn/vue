@@ -25,9 +25,7 @@ body {
 a { 
 	text-decoration:none;
 }
-input{
-	outline: 0;
-}
+
 b,em{
 	font-style: normal;
 	font-weight: 100;

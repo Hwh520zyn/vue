@@ -1,15 +1,15 @@
 <template>
-	<div class="main-box">
+	<div class="main-box"  >
 		<div class="main_hd">
 			<h3>推荐攻略</h3>
 		</div>
 
-		<a href="javascript:;" v-for="(item,index) in list" :key="item.id"   @click="aaa(index)"  :style="{'background' : activeindex === index ? '#ff990047' : '' }">
+		<a   v-for="(item,index) in list" :key="item.id"     @click="aaa(index)"  :style="{'background' : activeindex === index ? '#ff990047' : '' }">
 			<div class="title"> <span >{{item.title}}</span>
 				<div class="tag"> <img :src="item.tag" alt="" /></div>
 			</div>
 			<dl class="clearfix">
-				<dt ><img :src="item.img"/></dt>
+				<dt ><img :src="item.img" v-lazy="item.img"/></dt>
 				<dd class="clearfix">
 					<div class="summary">
 						{{item.content}}
@@ -38,58 +38,26 @@
 </template>
 
 <script>
+	import { Lazyload } from 'mint-ui';
+	import axios from "axios";
 	export default {
 		name: "IndexMain",
 		data() {
 			return {
 				activeindex:"", 
-				list : [
-							{ 
-								title:" 三亚的正确打开方式——吃泡三亚" ,
-								tag:"../../static/img/tag.png", 
-								img:  "../../static/img/m1.jpeg", 
-								content : "Hi~大家好，我是爱拉 去 三亚 ！仿佛动物迁徙一样，一到冬天北方人民都会不约而同的做出几乎同样的选择，那就是，挺近 三亚 ！", 
-								watch:"24234", 
-								author_name: "艾拉", 
-								author_img : "../../static/img/author_img.jpeg" ,
-								strategy_btn : "",
-								question_btn: "",
-								tourist_btn :""
-							},
-					
-							{ 
-								title:" 注意！花期提前！2018日本樱花最新预测" ,
-								tag:"", 
-								img:  "../../static/img/m2.jpeg", 
-								content : "再过1周樱花就要开了，你能赶上花期吗？", 
-								watch:"158745", 
-								author_name: "", 
-								author_img : "",
-								strategy_btn : "../../static/img/gl.png",
-								question_btn: "",
-								tourist_btn :""
-							},
-							
-							{ 
-								title:"在最美的时光遇见你——青海甘肃6日自驾游" ,
-								tag:"", 
-								img:  "../../static/img/m3.jpeg", 
-								content : "2016年6月，我18年的学生生涯正式结束，一想到以后苦逼的工作节奏，就想着必须抓紧最后的时间出去浪一浪。一开始我俩打算在川内自驾，想去色达，但苏苏说路很难走把我们给吓回来了。七八月恰逢青海最美的时候，而且很适合自驾，于是果断把目的地定在了青海。我太懒，这是我的第一篇游记，也是因为有朋友问我们要攻略，就索性写一篇，纪念学生时代最后的疯狂。", 
-								watch:"103238", 
-								author_name: "", 
-								author_img : "",
-								strategy_btn : "",
-								question_btn: "../../static/img/wd.png",
-								tourist_btn :""
-							}
-							
-				]
+				list : []
 			}
 		},
 		methods : {
 			aaa:function(n){
-            this.activeindex = n;
-     	   }
+           		 this.activeindex = n;
+     		}
+		},
+		mounted() {
+			axios.get("http://localhost:3000/indexMain")
+			.then((res)=>{
+				this.list=res.data;
+			})
 		}
 	}
 </script>

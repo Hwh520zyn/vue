@@ -3,23 +3,21 @@
 			<section>
 				<a href="javescript:;" class="logo"></a>
 				<ul class="nav-tab" >
-					<li :class="{ active : show }" @click="show = !show">普通登录</li>
-					<li >短信验证码登录</li>
+					<li :class="{ active : show }" @click="show = !show">注册</li>
+					<li >手机号注册</li>
 				</ul>
 				
-				<form action="/" method="post" class="frm">
+				<form action="/IndexMain" method="post" class="frm" >
 					<!--文本框-->
-					<div class="border-inp">
-						<p  ><input type="text" name="username" id="username" placeholder="用户名"/></p>
+					<div class="border-inp" @click="stopProp()">
+						<p  ><input type="text" name="username" id="username" placeholder="用户名" /></p>
 						<p><input type="password" name="password" id="password"   placeholder="密码" /></p>
 					</div>
-					<!--忘记密码-->
-					<div class="fotgetPsw"><a href="javascript:;">忘记密码 ?</a></div>
 					</form>
 					<!--按钮-->
 					<div class="btn_box">
-						<button class="login_btns" @click="login()">登录</button>
-						<router-link to="/Regist"><button class="regist_btns">快速注册</button></router-link>
+						<button class="login_btns" @click="regist()">注册</button>
+						<router-link to="/Login"><button class="regist_btns">登录</button></router-link>
 					</div>
 				
 		</section>
@@ -41,33 +39,57 @@
 
 <script>
 	export default{
-		name : "Login",
+		name : "Regist",
 		data(){
 			return {
-				show : true
+				show : true,
 			}
 		},
 		methods : {
-			login : function(){
+			stopProp: function(e) {
+           		  e = e || event;
+          		  e.stopPropagation();
+      		  },
+			regist : function(){
+				var newUser= {};
+				var flag=false;
+				this.$store.dispatch("getUserNmaeA" , { username , psw });
+
 				var username=$("#username").val();
-				var psw = $("#password").val();
-				for( var i=0; i<this.$store.state.users.length; i++ ){
-						var um=this.$store.state.users[i].username;
-						var pw=this.$store.state.users[i].psw;
-						if( username=="" || psw=="" ){
-							alert("请输入账号或密码");
-							break;
-						}
-						if( username==um  &&  psw==pw ){
-							alert("登录成功");
-							location.href="/";
-							$(".login").innerText="um"
-						}
-						
+				var psw=$("#password").val();
+				
+				for( var i=0;i<this.$store.state.users.length;i++ ){
+					if(this.$store.state.users[i].username==username){
+						flag=true;
+						alert("该用户名已被注册，请选择其他用户名");
+						break;
+					}
+				}	
+				if(!flag){
+					if( username=="" || psw=="" ){
+						alert("账号或密码不能为空");
+					}else{
+						 newUser.username = username;
+               			 newUser.psw = psw;
+						 this.$store.state.users.push(newUser);
+						 alert("注册成功");
+
+					}
 				}
+					
+					
+					
+					
+				
+				
+				
+				
+				
+				
+				
+				
 			}
 		}
-		
 	}
 </script>
 
@@ -140,7 +162,9 @@
 		font-size: 0.12rem;
 		color: #999;
 	}
-	
+	.btn_box{
+		margin-top: 0.1rem;
+	}
 	.btn_box button{
 		margin-top: 0.1rem;
 		height: 0.34rem;
