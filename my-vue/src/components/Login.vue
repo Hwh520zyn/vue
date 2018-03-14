@@ -61,7 +61,7 @@
 						if( username==um  &&  psw==pw ){
 							alert("登录成功");
 							location.href="/";
-							$(".login").innerText="um"
+							console.log( $("#login").innerText() )
 						}
 						
 				}

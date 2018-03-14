@@ -1,5 +1,5 @@
 <template>
-	<div class="main-box"  >
+	<div class="main-box"   >
 		<div class="main_hd">
 			<h3>推荐攻略</h3>
 		</div>
@@ -33,7 +33,6 @@
 				</dd>
 			</dl>
 		</a>
-
 	</div>
 </template>
 
@@ -51,13 +50,15 @@
 		methods : {
 			aaa:function(n){
            		 this.activeindex = n;
-     		}
-		},
+     			}
+			},
 		mounted() {
 			axios.get("http://localhost:3000/indexMain")
 			.then((res)=>{
 				this.list=res.data;
 			})
+		},
+		updated(){
 		}
 	}
 </script>

@@ -54,7 +54,6 @@
 				var newUser= {};
 				var flag=false;
 				this.$store.dispatch("getUserNmaeA" , { username , psw });
-
 				var username=$("#username").val();
 				var psw=$("#password").val();
 				
