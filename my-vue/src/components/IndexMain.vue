@@ -1,38 +1,42 @@
 <template>
-	<div class="main-box"   >
+	<div class="main-box"  >
 		<div class="main_hd">
 			<h3>推荐攻略</h3>
 		</div>
 
-		<a   v-for="(item,index) in list" :key="item.id"     @click="aaa(index)"  :style="{'background' : activeindex === index ? '#ff990047' : '' }">
-			<div class="title"> <span >{{item.title}}</span>
-				<div class="tag"> <img :src="item.tag" alt="" /></div>
-			</div>
-			<dl class="clearfix">
-				<dt ><img :src="item.img" v-lazy="item.img"/></dt>
-				<dd class="clearfix">
-					<div class="summary">
-						{{item.content}}
-					</div>
-						<div class="info">
-							<em class="watch">{{item.watch}}</em>浏览
-							
-							<div class="author" >
-								<em class="author-name fl">{{item.author_name}}</em>
-								<i class="author-img fl">
-									<img :src="item.author_img" alt="" />
-								</i>
-								
-								<div class="strategy-btn"  ><img :src="item.strategy_btn" alt=""/></div>
-								<div class="question_btn" ><img :src="item.question_btn" alt=""/></div>
-								<div class="tourist_btn"  ><img :src="item.tourist_btn" alt=""/></div>
-							</div>
+		<router-link to="/HornetDetail" class="link">
+			<a   v-for="(item,index) in list" :key="item.id"     @click="aaa(index)"  :style="{'background' : activeindex === index ? '#ff990047' : '' }">
+				<div class="title"> <span >{{item.title}}</span>
+					<div class="tag"> <img :src="item.tag" alt="" /></div>
+				</div>
+				<dl class="clearfix">
+					<dt ><img :src="item.img" v-lazy="item.img"/></dt>
+					<dd class="clearfix">
+						<div class="summary">
+							{{item.content}}
 						</div>
-					
-					
-				</dd>
-			</dl>
-		</a>
+							<div class="info">
+								<em class="watch">{{item.watch}}</em>浏览
+								
+								<div class="author" >
+									<em class="author-name fl">{{item.author_name}}</em>
+									<i class="author-img fl">
+										<img :src="item.author_img" alt="" />
+									</i>
+									
+									<div class="strategy-btn"  ><img :src="item.strategy_btn" alt=""/></div>
+									<div class="question_btn" ><img :src="item.question_btn" alt=""/></div>
+									<div class="tourist_btn"  ><img :src="item.tourist_btn" alt=""/></div>
+								</div>
+							</div>
+						
+						
+					</dd>
+				</dl>
+			</a>
+			
+		</router-link>
+
 	</div>
 </template>
 
@@ -50,15 +54,13 @@
 		methods : {
 			aaa:function(n){
            		 this.activeindex = n;
-     			}
-			},
+     		}
+		},
 		mounted() {
 			axios.get("http://localhost:3000/indexMain")
 			.then((res)=>{
 				this.list=res.data;
 			})
-		},
-		updated(){
 		}
 	}
 </script>
@@ -103,7 +105,7 @@
 		background-position: 0.1rem -0.1rem;
 	}
 	
-	.main-box a {
+	.main-box .link {
 		display: block;
 		min-height: 1rem;
 		padding-left: 0.2rem;

@@ -12,7 +12,7 @@
 			<!--登录按钮-->
 			<div class="login-box">
 				
-					<router-link to="/Login" id="login" class="login">登录</router-link>	
+					<router-link to="/Login" class="login">登录</router-link>	
 
 					<!--登录成功的默认头像-->
 					<span class="login-ok-default"><a href="javascript:;"><img src="../../static/img/login-ok-default.jpeg" alt="" /></a></span>

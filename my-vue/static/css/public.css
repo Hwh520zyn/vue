@@ -9,7 +9,9 @@ img{
 	display: block;
 	border:none;
 }
-
+h1, h2, h3, h4, h5, h6{
+	font-weight: normal;
+}
 address, caption, cite, code, dfn, th, var {
 	font-style:normal; 
 	font-weight:normal;
@@ -60,4 +62,10 @@ b,em{
 .fr{
 	float: right;
 	display: inline;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
 }

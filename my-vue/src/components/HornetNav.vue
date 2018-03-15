@@ -1,12 +1,12 @@
 <template>
 	<div class="nav-box">
 		<ul class="nav-ul">
-			<li class="nav-li1"><a href="javascript:;"><i></i> <br /> 找攻略 </a></li>
-			<li class="nav-li2"><a href="javascript:;"><i></i> <br /> 看游记 </a></li>
-			<li class="nav-li3"><a href="javascript:;"><i></i> <br /> 问达人 </a></li>
-			<li class="nav-li4"><a href="javascript:;"><i></i> <br /> 结伴 </a></li>
-			<li class="nav-li5"><a href="javascript:;"><i></i> <br /> 酒店 </a></li>
-			<li class="nav-li6"><a href="javascript:;"><i></i> <br /> 旅行商城 </a></li>
+			<li class="nav-li1"><router-link to="/gl"><i></i> <br /> 找攻略 </router-link></li>
+			<li class="nav-li2"><router-link to="/youji"><i></i> <br /> 看游记 </router-link></li>
+			<li class="nav-li3"><router-link to="/answer"><i></i> <br /> 问达人 </router-link></li>
+			<li class="nav-li4"><a href="banj"><i></i> <br /> 结伴 </a></li>
+			<li class="nav-li5"><router-link to="/hotel"><i></i> <br /> 酒店 </router-link></li>
+			<li class="nav-li6"><router-link to="/mall"><i></i> <br /> 旅行商城 </router-link></li>
 			<li class="nav-li7"><a href="javascript:;"><i></i> <br /> 机票 </a></li>
 			<li class="nav-li8"><a href="javascript:;"><i></i> <br /> 当地玩乐 </a></li>
 		</ul>
@@ -35,12 +35,14 @@
 	}
 	.nav-ul{
 		padding:0 0.05rem 0 0.07rem;
-		float: left;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
 	}
 	.nav-ul li{
-		width: 0.9rem;
+		width: 0.8rem;
 		height: 0.9rem;
-		float: left;
+		
 	}
 	.nav-ul li a{
 		display: inline-block;
